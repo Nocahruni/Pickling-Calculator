@@ -1,0 +1,28 @@
+//created by Nocahruni (Noah T. Stockum) on March 31, 2026
+
+#include <stdio.h>
+#define ML_IN_CUPS 236.6
+#define ML_IN_TBSP 14.8
+
+int main() {
+    double brineRatio;
+    double saltBulkDensity;
+    char retry = 'n';
+    do {
+        printf("Enter the ideal brine ratio as a decimal: ");
+        scanf("%lf", &brineRatio);
+        printf("Enter the bulk density of your brand of salt (g/mL): ");
+        scanf("%lf", &saltBulkDensity);
+
+        double saltML = ML_IN_CUPS * brineRatio / saltBulkDensity;
+        double saltTBSP = saltML / ML_IN_TBSP;
+
+        printf("Aim for roughly %.2f tablespoons of salt per cup of water in a %.1f%% brine solution.\n", 
+            saltTBSP, brineRatio * 100);
+        printf("%.2f tablespoons is equal to %.2f teaspoons.\n", saltTBSP, saltTBSP * 3);
+        
+        printf("Would you like to try again? (y/n): ");
+        scanf(" %c", &retry);
+        } while (retry == 'y' || retry == 'Y');
+    return 0;
+}
